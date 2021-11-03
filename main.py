@@ -1,21 +1,25 @@
 import mss
 import mss.tools
-import numpy
-import pytesseract
+import cv2
+import numpy as np
+import pytesseract as tes
 
 def main():
-    artSet = {'top': 210, 'left': 1770, 'width': 450, 'height': 45}
     mainStat = {'top': 270, 'left': 1750, 'width': 250, 'height': 170}
-    subStats = {'top': 550, 'left': 1750, 'width': 400, 'height': 175}
+    subStats = {'top': 560, 'left': 1750, 'width': 400, 'height': 205}
 
     sct = mss.mss()
-    img = sct.grab(mainStat)
-    mss.tools.to_png(img.rgb, img.size, output='img.png')
+    tes.pytesseract.tesseract_cmd = r'D:\Users\Dosx001\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+    for sect in [mainStat, subStats]:
+        img = sct.grab(sect)
+        #mss.tools.to_png(img.rgb, img.size, output='img.png')
 
-    pytesseract.pytesseract.tesseract_cmd = r'D:\Users\Dosx001\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
-    text = pytesseract.image_to_string(numpy.asarray(img))
-    print(text)
-    print(text.split('\n'))
+        img = np.asarray(img)
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        img = cv2.GaussianBlur(img, (3, 3), 0)
+
+        text = tes.image_to_string(img)
+        print(text)
 
 if __name__ == "__main__":
     main()
