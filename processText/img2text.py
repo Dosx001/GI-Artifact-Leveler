@@ -33,12 +33,9 @@ class Img2Text:
             if len(stat) == 0:
                 continue
             if stat[1] == " ":
-                if "+" in stat:
-                    stat = stat[2::].split("+")
-                    output['subStats'][" ".join(stat[:-1])] = stat[-1]
-                else:
-                    stat = stat[2::].split('t')
-                    output['subStats'][" ".join(stat[:-1])] = stat[-1]
+                stat = stat[2::].split("+" if "+" in stat else "t")
+                key = " ".join(stat[:-1]) + ("%" if "%" in stat[-1] else "")
+                output['subStats'][key] = stat[-1].strip('%')
             else:
                 output['set'] = stat[:-1]
                 break
