@@ -3,6 +3,7 @@ import mss.tools
 import cv2
 import numpy as np
 import pytesseract as tes
+import asyncio
 
 class Img2Text:
     def __init__(self):
@@ -16,15 +17,18 @@ class Img2Text:
         img = self.sct.grab(sect)
         mss.tools.to_png(img.rgb, img.size, output="out.png")
 
-    def getText(self):
+    async def getText(self):
         output = {"set": "", "piece": "", "mainStat": [], "subStats" : {}}
-        txt = self.processText(self.setPiece, 2)
+        task1 = asyncio.create_task(self.processText(self.setPiece, 2))
+        task2 = asyncio.create_task(self.processText(self.mainStat, 1))
+        task3 = asyncio.create_task(self.processText(self.subStats, 5))
+        txt = await task1
         output['piece'] = txt[0]
         stat = self.correction(txt[-1])
-        txt = self.processText(self.mainStat, 1)
+        txt = await task2
         output['mainStat'].append(txt[0])
         output['mainStat'].append(stat)
-        txt = self.processText(self.subStats, 5)
+        txt = await task3
         for stat in txt:
             if len(stat) == 0:
                 continue
@@ -40,7 +44,7 @@ class Img2Text:
                 break
         return output
 
-    def processText(self, sect, split):
+    async def processText(self, sect, split):
         img = self.sct.grab(sect)
         img = np.asarray(img)
         img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
