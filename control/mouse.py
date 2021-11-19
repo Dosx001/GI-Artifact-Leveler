@@ -8,13 +8,12 @@ class Mouse:
     def move(self):
         if self.post == 10:
             self.post = 0
-            ag.moveRel(-1420, 10)
+            ag.moveRel(-1420, 6)
+            for i in range(9):
+                ag.scroll(-1)
         else:
             self.post += 1
             ag.moveRel(142, 0)
-        for i in range(9):
-            ag.scroll(-1)
-        ag.moveRel(0, 5)
 
     def click(self):
         ag.click(clicks=2)
