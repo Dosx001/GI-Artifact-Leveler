@@ -3,6 +3,7 @@ import mss.tools
 import cv2
 import numpy as np
 import pytesseract as tes
+from fuzzywuzzy import process
 import asyncio
 
 class Img2Text:
@@ -12,6 +13,8 @@ class Img2Text:
         self.subStats = {'top': 560, 'left': 1750, 'width': 400, 'height': 205}
         self.sct = mss.mss()
         tes.pytesseract.tesseract_cmd = r'D:\Users\Dosx001\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
+        self.stats = ["CRIT Rate", "CRIT DMG", "Energy Recharge", "Elemental Mastery",
+                "ATK%", "ATK", "HP%", "DEF%", "HP", "DEF"]
 
     def saveImg(self, sect):
         img = self.sct.grab(sect)
@@ -35,6 +38,7 @@ class Img2Text:
             if stat[1] == " ":
                 stat = stat[2::].split("+" if "+" in stat else "t")
                 key = " ".join(stat[:-1]) + ("%" if "%" in stat[-1] else "")
+                key = process.extractOne(key, self.stats)[0]
                 output['subStats'][key] = stat[-1].strip('%')
             else:
                 output['set'] = stat[:-1]
