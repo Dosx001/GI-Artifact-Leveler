@@ -1,2 +1,2 @@
 #!/bin/bash
-vim -p main.py control/mouse.py processText/img2text.py
+vim -p main.py utils/mouse.py utils/img2text.py

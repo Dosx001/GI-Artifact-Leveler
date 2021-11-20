@@ -1,5 +1,5 @@
-from processText.img2text import Img2Text
-from control.mouse import Mouse
+from utils.img2text import Img2Text
+from utils.mouse import Mouse
 from argparse import ArgumentParser
 import asyncio
 
