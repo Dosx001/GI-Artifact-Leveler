@@ -1,2 +1,2 @@
 #!/bin/bash
-vim -p main.py utils/mouse.py utils/img2text.py
+vim -p main.py artifact/leveler.py utils/img2text.py utils/mouse.py

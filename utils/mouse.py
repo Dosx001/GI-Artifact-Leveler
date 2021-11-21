@@ -2,9 +2,8 @@ from time import sleep
 import pyautogui as ag
 
 class Mouse:
-    def __init__(self, col, total):
+    def __init__(self, col):
         self.col = col
-        self.total = total
 
     def move(self):
         if self.col == 10:
