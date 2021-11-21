@@ -18,3 +18,15 @@ class Mouse:
     def click(self):
         ag.click(clicks=2)
         sleep(.1)
+
+    def button(self, target):
+        pos = ag.position()
+        ag.moveTo(target)
+        self.click()
+        ag.moveTo(pos)
+
+    def lock(self):
+        self.button((2190, 525))
+
+    def enchance(self):
+        self.button((2300, 1035))

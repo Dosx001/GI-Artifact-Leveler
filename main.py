@@ -1,16 +1,19 @@
 from utils.img2text import Img2Text
 from utils.mouse import Mouse
-from artifact.leveler import Leveler
+from artifact.enhancer import Enhancer
 from argparse import ArgumentParser
 import asyncio
 
 def main(args):
     mu = Mouse(args.column)
     itt = Img2Text()
-    lvl = Leveler(args.total)
-    while (lvl.total < 6):
+    eh = Enhancer(args.total)
+    while (eh.total < 6):
         mu.click()
-        if lvl.picker(asyncio.run(itt.getText())):
+        score = eh.score(asyncio.run(itt.getText()))
+        if score == 0:
+            mu.lock()
+        elif score == 1:
             mu.click()
         mu.move()
 
