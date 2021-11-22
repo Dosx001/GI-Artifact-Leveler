@@ -6,7 +6,7 @@ class Mouse:
         self.col = col
 
     def move(self):
-        if self.col == 10:
+        if self.col == 11:
             self.col = 0
             ag.moveRel(-1420, 6)
             for i in range(9):

@@ -19,6 +19,6 @@ def main(args):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('--column', type=int, default=0, help='An optional integer argument')
-    parser.add_argument('--total', type=int, default=0, help='An optional integer argument')
+    parser.add_argument('--column', type=int, default=1, help='Integer: 1 to 11')
+    parser.add_argument('--total', type=int, default=0, help='Integer: 0 to 6')
     main(parser.parse_args())
