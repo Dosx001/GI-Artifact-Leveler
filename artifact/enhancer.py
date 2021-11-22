@@ -6,7 +6,7 @@ class Enhancer:
                 "Plume of Death": lambda artifact: self.PoD(artifact),
                   "Sands of Eon": lambda artifact: self.SoE(artifact),
             "Goblet of Eonothem": lambda artifact: self.GoE(artifact),
-               "Circlet of Logo": lambda artifact: self.CoL(artifact)
+              "Circlet of Logos": lambda artifact: self.CoL(artifact)
                 }
 
     def score(self, artifact):
@@ -17,52 +17,51 @@ class Enhancer:
 
     def FoL(self, artifact):
         score, size = self.scorer(artifact)
-        if 34 < score:
-            return 1
-        elif 21 < score and size == 3:
-            return 1
-        return 2
+        if 33 < score:
+            return 0
+        elif score < 7:
+            return 2
+        return 1
 
     def PoD(self, artifact):
         score, size = self.scorer(artifact)
-        if 34 < score:
-            return 1
-        elif 21 < score and size == 3:
-            return 1
-        return 2
+        if 33 < score:
+            return 0
+        elif score < 7:
+            return 2
+        return 1
 
     def SoE(self, artifact):
         score, size = self.scorer(artifact)
-        if artifact['mainStat'][0] == "ATK%":
-            if 34 < score:
-                return 1
-            elif 31 < score and size == 3:
-                return 1
-        if 34 < score:
-            return 1
-        elif 21 < score and size == 3:
-            return 1
-        return 2
+        if 33 < score:
+            return 0
+        elif score < 7:
+            return 2
+        return 1
 
     def GoE(self, artifact):
-        if "DMG Bonus" in artifact['mainStat'][0]:
-            return 1
         score, size = self.scorer(artifact)
-        if 34 < score:
+        if "DMG Bonus" in artifact['mainStat'][0]:
+            if 33 < score:
+                return 0
             return 1
-        elif 21 < score and size == 3:
-            return 1
-        return 2
+        if 33 < score:
+            return 0
+        elif score < 7:
+            return 2
+        return 1
 
     def CoL(self, artifact):
-        if artifact['mainStat'][0] in ["CRIT Rate", "CRIT DMG"]:
-            return 1
         score, size = self.scorer(artifact)
-        if 34 < score:
+        if artifact['mainStat'][0] in ["CRIT Rate", "CRIT DMG"]:
+            if 33 < score:
+                return 0
             return 1
-        elif 21 < score and size == 3:
-            return 1
-        return 2
+        if 33 < score:
+            return 0
+        elif score < 7:
+            return 2
+        return 1
 
     def scorer(self, artifact):
         points = {

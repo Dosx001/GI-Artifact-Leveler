@@ -35,7 +35,7 @@ class Img2Text:
         for stat in txt:
             if len(stat) == 0:
                 continue
-            if stat[1] == " ":
+            if " " in stat[0:3]:
                 stat = stat[2::].split("+" if "+" in stat else "t")
                 key = process.extractOne(" ".join(stat[:-1]), self.stats)[0]
                 if "%" in stat[-1] and key in ["ATK", "HP", "DEF"]:
