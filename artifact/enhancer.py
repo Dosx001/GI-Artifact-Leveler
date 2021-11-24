@@ -17,49 +17,49 @@ class Enhancer:
 
     def FoL(self, artifact):
         score, size = self.scorer(artifact)
-        if 33 < score:
+        if 31 < score:
             return 0
-        elif score < 7:
+        elif score < 14:
             return 2
         return 1
 
     def PoD(self, artifact):
         score, size = self.scorer(artifact)
-        if 33 < score:
+        if 31 < score:
             return 0
-        elif score < 7:
+        elif score < 14:
             return 2
         return 1
 
     def SoE(self, artifact):
         score, size = self.scorer(artifact)
-        if 33 < score:
+        if 31 < score:
             return 0
-        elif score < 7:
+        elif score < 14:
             return 2
         return 1
 
     def GoE(self, artifact):
         score, size = self.scorer(artifact)
         if "DMG Bonus" in artifact['mainStat'][0]:
-            if 33 < score:
+            if 31 < score:
                 return 0
             return 1
-        if 33 < score:
+        if 31 < score:
             return 0
-        elif score < 7:
+        elif score < 14:
             return 2
         return 1
 
     def CoL(self, artifact):
         score, size = self.scorer(artifact)
         if artifact['mainStat'][0] in ["CRIT Rate", "CRIT DMG"]:
-            if 33 < score:
+            if 31 < score:
                 return 0
             return 1
-        if 33 < score:
+        if 31 < score:
             return 0
-        elif score < 7:
+        elif score < 14:
             return 2
         return 1
 
