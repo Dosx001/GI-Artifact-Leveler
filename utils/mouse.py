@@ -7,7 +7,7 @@ class Mouse:
 
     def move(self):
         if self.col == 11:
-            self.col = 0
+            self.col = 1
             ag.moveRel(-1420, 6)
             for i in range(9):
                 ag.scroll(-1)
