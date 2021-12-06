@@ -43,8 +43,8 @@ first.
 
 If no additional [ arguments ](#optional-arguments) are added when running the script move your
 cursor to the first column of the in-game menu. And place the cursor on the upper corner of the
-artifact like the image below. If your not sure click the artifact and check your cursor is inside
-the red box. Make to unclick the red box before running the script.
+artifact like the image below. If your not sure click the artifact and check if your cursor is
+inside the red box. Make to unclick the red box before running the script.
 
 ![Imgur](https://i.imgur.com/McsBqVm.png)
 
