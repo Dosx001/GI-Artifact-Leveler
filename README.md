@@ -6,7 +6,7 @@ are exceptional the artifact will be lock. Else it will be leave it alone for ma
 Does not represent the final quality of the product.
 
 The algorithm for scraping and locking artifacts is still being work on.
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BNTzZlS-Ld8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Watch the video](https://img.youtube.com/vi/BNTzZlS-Ld8/maxresdefault.jpg)](https://youtu.be/BNTzZlS-Ld8)
 
 # How to Run
 First thing you need to run GI-Artifact-Leveler is to download and install Tesseract.
